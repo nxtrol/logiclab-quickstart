@@ -12,37 +12,29 @@ LogicLab编程工具用户指南
 
    logiclab
 
-LogicLab是符合IEC61131-3标准的软件解决方案，工业自动化的基础，包含如下几部分软件（点击链接了解更多详情）：
+LogicLab是符合IEC61131-3标准的软件解决方案，工业自动化的基础，包含如下几部分软件（点击链接了解更多详情说明）：
 
-* :ref:`LogicLab编程工具 <logiclab-engineer>` 是运行在Windows平台PC上的符合IEC61131-3标准的PLC编程环境，
-  支持标准中的五种编程语言：梯形图(LD)、功能块图(FBD)、结构化文本(ST)、顺序功能图(SFC)与指令表(IL)。
-  高效的编译器设计大大提升PLC逻辑代码在控制器平台上运行的性能。
-  LogicLab编程工具同时支持在线查看变量值、强制设定在线值、设定断电与单步跟踪与软件逻辑示波器等等调试功能。
-  同时LogicLab编程工具支持不停机在线更新PLC程序等等高级功能，而背板总线、现场总线与功能组件的图形化配置功能则大大简化用户的操作。
-  LogicLab根据控制器具体的实现功能可以实现通过以太网、串口、USB、CAN等等接口下载与调试PLC程序。
+* :ref:`LogicLab编程工具 <logiclab-engineer>` 是运行在Windows平台PC上的符合IEC61131-3标准的PLC编程环境，由应用工程师根据现场工艺进行相关逻辑程序开发。
 
-* :ref:`LogicLab运行系统 <logiclab-runtime>` 是运行在PLC控制器的MCU、CPU或者DSP处理器硬件上的软件组件，专门用于执行由LogicLab编程工具下载至PLC控制器存储器中的二进制逻辑代码，
-  以及负责执行LogicLab运行内核中的C/C++功能组件。LogicLab运行系统可以支持市面上主流的实时操作系统或者不带操作系统(Bare Metal)。
-  极简的内核与开放式插件化框架的设计，使得LogicLab运行系统具备极高的性能与高度的可定制性。
-  
+* :ref:`LogicLab运行系统 <logiclab-runtime>` 是运行在PLC控制器的MCU、CPU或者DSP处理器硬件上的软件核心，专门用于执行由LogicLab编程工具编写的PLC逻辑，如：梯形图、功能块图或者结构化文本等等逻辑代码。
 
-* :ref:`LogicLab PLC SDK <logiclab-plcsdk>` 专门用于PLC控制器研发工程师使用C/C++开发语言实现自定义的PLC功能组件。
-  开放式的插件化框架设计，PLC研发工程师可以集成任何C/C++组件至PLC内核或更换LogicLab运行系统中提供的功能组件。完全开放式的PLC SDK API与移植代码设计，PLC研发工程师可深度参与研发流程。
-  
+* :ref:`LogicLab PLC SDK <logiclab-plcsdk>` 专门用于PLC控制器研发工程师使用C/C++编程语言开发任意自定义的PLC功能组件，该组件仅仅适用于产品研发型企业。
 
-本文将着重介绍LogicLab编程工具的使用，涉及基于LogicLab运行系统与PLC SDK实现自主品牌的PLC控制器，请与翌控科技取得联系:support@nxtrol.com。
+* :ref:`LogicLab编程工具定制 <logiclab-custom>` LogicLab编程工具可以深入进行定制化，包括编程工具界面简单扩展、深度模块化扩展以及完全OEM定制化等等。
+
+本文将着重介绍LogicLab编程工具的使用与LogicLab运行系统的入门配置。如需通过实现自主品牌的PLC控制器，请与翌控科技取得联系: ``support@nxtrol.com`` 。
 
 
-从哪开始
+从这里开始
 --------------
-* :ref:`LogicLab软件下载与安装 <logiclab-download-install>` 页面将描述如何下载以及安装LogicLab编程工具。
+* :ref:`LogicLab软件下载与安装 <logiclab-install>` 页面将描述如何下载以及安装LogicLab编程工具。
 
-* :ref:`快速新建第一个工程HelloWorld <quickstart>` 页面将指导您如何快速新建第一个梯形图工程并快速进入编程与调试状态。
+* :ref:`LogicLab基础操作指南 <logiclab-basic>` 页面将指导您如何快速新建第一个梯形图工程并快速进入编程与调试状态。
 
-* :ref:`IEC61131-3编程教程 <iec61131-3>` 页面详细讲述IEC61131-3标准与基于LogicLab应用，如果您没有符合IEC61131-3标准PLC编程基础，请务必学习。
+* :ref:`LogicLab现场总线 <logiclab-fieldbus>` 页面详细LogicLab编程工具中的现场总线组态功能。如果您使用现场总线出现疑问，请首先参阅此部分的说明。
+
+* :ref:`基于LogicLab的IEC61131-3编程指南 <logiclab-iec61131>` 页面详细讲述IEC61131-3标准关键点与基于LogicLab应用，如果您没有符合IEC61131-3标准PLC编程基础，请务必学习。
   如您已经使用其他厂商符合IEC61131-3的PLC产品与编程软件，也建议您初步浏览。
-
-* :ref:`现场总线 <fieldbus>` 页面详细LogicLab编程工具中的现场总线组态功能。如果您使用现场总线出现疑问，请首先参阅此部分的说明。
 
 * :ref:`参考平台使用入门 <reference-system>` 页面介绍LogicLab支持的学习平台、开发套件、客户产品的使用入门。
 

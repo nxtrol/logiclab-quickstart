@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>EtherCAT现场总线 &mdash; LogicLab编程工具用户指南 1.0.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> LogicLab编程工具用户指南
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">EtherCAT现场总线</a><ul>
+<li><a class="reference internal" href="#id2">基本概念</a></li>
+<li><a class="reference internal" href="#id3">快速入门</a></li>
+<li><a class="reference internal" href="#esi">导入ESI文件</a></li>
+<li><a class="reference internal" href="#id4">EtherCAT主站配置</a><ul>
+<li><a class="reference internal" href="#id5">通用设定选项卡</a></li>
+<li><a class="reference internal" href="#syncunits">SyncUnits选项卡</a></li>
+<li><a class="reference internal" href="#raw-commands">Raw commands选项卡</a></li>
+<li><a class="reference internal" href="#tasks-and-cycle-time">Tasks and cycle time</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ethercathotconnect">EtherCAT网络与HotConnect组</a></li>
+<li><a class="reference internal" href="#id6">从站配置</a><ul>
+<li><a class="reference internal" href="#id7">通用选项卡</a></li>
+<li><a class="reference internal" href="#startup">Startup选项卡</a></li>
+<li><a class="reference internal" href="#id8">输入与输出选项卡</a></li>
+<li><a class="reference internal" href="#mailbox">Mailbox选项卡</a></li>
+<li><a class="reference internal" href="#dc">分布式时钟DC选项卡</a></li>
+<li><a class="reference internal" href="#slots">Slots模块选项卡</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">EtherCAT主站在线模式</a></li>
+<li><a class="reference internal" href="#id10">EtherCAT从站在线模式</a></li>
+<li><a class="reference internal" href="#id11">EtherCAT诊断功能</a></li>
+<li><a class="reference internal" href="#id12">诊断数据结构体参考</a></li>
+<li><a class="reference internal" href="#faq">问题分析与FAQ</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LogicLab编程工具用户指南</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+<div role="navigation" aria-label="Breadcrumbs">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>EtherCAT现场总线</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ethercat">
+<span id="logiclab-fieldbus-ethercat"></span><h1>EtherCAT现场总线<a class="headerlink" href="#ethercat" title="永久链接至标题">¶</a></h1>
+<p>EtherCAT是高性能工业实时以太网总线，可以通过标准以太网接口将大量I/O模块、伺服驱动器、传感器等等EtherCAT从站设备连接至工业PLC控制器、运动控制器、CNC数控机床、机器人控制器等等设备。</p>
+<div class="contents local topic" id="id1">
+<p class="topic-title">本章节内容目录</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id2" id="id29">基本概念</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id30">快速入门</a></p></li>
+<li><p><a class="reference internal" href="#esi" id="id31">导入ESI文件</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id32">EtherCAT主站配置</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id33">通用设定选项卡</a></p></li>
+<li><p><a class="reference internal" href="#syncunits" id="id34">SyncUnits选项卡</a></p></li>
+<li><p><a class="reference internal" href="#raw-commands" id="id35">Raw commands选项卡</a></p></li>
+<li><p><a class="reference internal" href="#tasks-and-cycle-time" id="id36">Tasks and cycle time</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ethercathotconnect" id="id37">EtherCAT网络与HotConnect组</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id38">从站配置</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id39">通用选项卡</a></p></li>
+<li><p><a class="reference internal" href="#startup" id="id40">Startup选项卡</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id41">输入与输出选项卡</a></p></li>
+<li><p><a class="reference internal" href="#mailbox" id="id42">Mailbox选项卡</a></p></li>
+<li><p><a class="reference internal" href="#dc" id="id43">分布式时钟DC选项卡</a></p></li>
+<li><p><a class="reference internal" href="#slots" id="id44">Slots模块选项卡</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id9" id="id45">EtherCAT主站在线模式</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id46">EtherCAT从站在线模式</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id47">EtherCAT诊断功能</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id48">诊断数据结构体参考</a></p></li>
+<li><p><a class="reference internal" href="#faq" id="id49">问题分析与FAQ</a></p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>基本概念<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>EtherCAT从站使用ESI(EtherCAT Slave Information)文件描述，它采用XML格式描述所有的设备特点以及如何与EtherCAT主站通讯。</p>
+<p>ESI文件格式由ETG(EtherCAT Technology Group)组织采用的ETG.2000标准进行规范化，单个ESI文件可以包含一个或者多个从站设备与版本，他们通常由从站设备厂商直接提供。</p>
+<p>整个EtherCAT网络配置的输出是一个XML文件，需要由EtherCAT主站进行加载与管理，这个配置文件叫做ENI(EtherCAT Network Information)文件。ENI文件格式需要符合ETG.2100标准。</p>
+<p>EtherCAT主站与从站之间的通过EtherCAT数据帧进行数据交互，这些数据帧是一些网络上的特殊以太网帧。EtherCAT数据帧由主站出发，经过每一个从站后再回到EtherCAT主站，每一个EtherCAT数据帧都包含一个或者多个EtherCAT命令。
+* 周期型数据帧：按照指定周期有EtherCAT主站发出的确定性实时数据帧，包含与所有EtherCAT从站进行交换的过程数据，这些数据以PDOs(Process data objects)方式组织，包含了对象字典的数据值。
+* 非周期型数据帧：按需进行发送并且用于实现服务的命令，例如：通过SDOs (Service data objects)读取一次对象字典数据。</p>
+<p>EtherCAT网络中经常用到的一个技术是分布式时钟DC(Distributed clock): 让EtherCAT主站与所有从站的时钟完美同步,通常情况下第一个支持DC功能的从站将会被用于整个网络的DC参考时钟, 它将负责同步所有的EtherCAT从站与EtherCAT主站以及EtherCAT主站中PLC的时序。</p>
+<p>EtherCAT主站与从站同时都包含状态机用于定义在启动以及运行阶段的状态，它们包括：
+* Init: 初始化状态
+* Boot: 固件加载、升级或者其他维护状态
+* PreOp: 预运行状态，主从站之间没有数据交换
+* SafeOp: 安全运行状态, 只有从站到主站的输入数据进行交互
+* Op: 正常运行状态, 所有输入与输出的数据交换正常进行</p>
+<p>每一个EtherCAT从站包含一个EtherCAT从站控制器ESC(EtherCAT Slave Controller)从站芯片，这个芯片的集成电路遵循EtherCAT总线规范进行通讯管理。</p>
+<p>一个ESC包含多个同步管理器SM(Sync Managers)，同步管理器是用于管理过程数据一致性以及内部通过邮箱处理非周期性命令的单元。PDOs需要分配到SM上来进行数据交换；ESI同时也包括现场总线内存管理单元FMMU (Fieldbus Memory Management Unit)，它是内存映射至过程数据逻辑地址区域的单元，同时一个EEPROM用于存储从站设置。</p>
+<p>EtherCAT协议同时也定义了很多用于通讯的子协议与设备规约，常见的协议如下：
+* CoE: CANopen over EtherCAT。基于EtherCAT协议的CANopen通讯规约
+* EoE: Ethernet over EtherCAT。基于EtherCAT协议以太网通讯
+* FoE: File access over EtherCAT。基于EtherCAT协议的文件访问
+* SoE: Sercos over EtherCAT。基于EtherCAT协议的Sercos通讯规约
+* FSoE: Safety over EtherCAT。基于EtherCAT协议的安全通讯规约</p>
+</div>
+<div class="section" id="id3">
+<h2>快速入门<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>通过以下步骤可以快速上手EtherCAT总线配置与应用，每一步都将在后续章节详细说明:</p>
+<ol class="arabic simple">
+<li><p>通过”Enabled”选择框使能EtherCAT主站</p></li>
+<li><p>导入所有必要的EtherCAT从站ESI文件（该文件请与EtherCAT从站设备供应商联系）</p></li>
+<li><p>在主站的”Main network”中添加所有从站设备, 或者启动Online在线模式进行在线”Scan network”功能</p></li>
+<li><p>通过手动或者在线模式配置从站slot以及modules（如果当前从站设备不存在slot以及modules配置，请忽略此步骤）</p></li>
+<li><p>配置分布式时钟DC与控制器支持的总线周期</p></li>
+<li><p>配置PDO以及关联PLC变量与PDO对象</p></li>
+<li><p>编译与下载工程使得EtherCAT配置生效</p></li>
+</ol>
+</div>
+<div class="section" id="esi">
+<h2>导入ESI文件<a class="headerlink" href="#esi" title="永久链接至标题">¶</a></h2>
+<p>为了配置EtherCAT网络，第一步需要做的就是导入所有您需要使用的从站设备ESI文件。</p>
+<p>为了导入ESI文件，需要选择目录 <code class="docutils literal notranslate"><span class="pre">工具/导入ESI</span></code> ，然后从文件系统中选择并导入一个正确的ESI文件，并在ESI设备列表中选择需要导入的一个或者多个设备。</p>
+<div class="figure align-center" id="id13">
+<img alt="../_images/logiclab_fieldbus_ethercat_1.jpg" src="../_images/logiclab_fieldbus_ethercat_1.jpg" />
+<p class="caption"><span class="caption-text">从ESI文件导入</span><a class="headerlink" href="#id13" title="永久链接至图片">¶</a></p>
+</div>
+<p>ESI文件通常是以.xml格式为扩展名的文件，但是需要注意的是一个主ESI文件中可能内部链接了若干包含了设备描述的子ESI文件，需要与您的设备供应商确定该ESI文件的组成。</p>
+</div>
+<div class="section" id="id4">
+<h2>EtherCAT主站配置<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>在资源窗口里面点击EtherCAT节点，打开EtherCAT主站设置窗口，在这里您可以设置所有的EtherCAT主站参数。.</p>
+<div class="section" id="id5">
+<h3>通用设定选项卡<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<div class="figure align-center" id="id14">
+<img alt="../_images/logiclab_fieldbus_ethercat_2.png" src="../_images/logiclab_fieldbus_ethercat_2.png" />
+<p class="caption"><span class="caption-text">EtherCAT参数设定选项</span><a class="headerlink" href="#id14" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Enabled: 全局开启使能EtherCAT网络以及生成ENI输出文件</p></li>
+<li><p>Master name: 可选EtherCAT主站的描述信息</p></li>
+<li><p>Online config / Set up…: 配置在线通讯参数，参考章节</p></li>
+<li><p>Online config / Online mode: 切换在线连接模式，参考章节</p></li>
+<li><p>View resulting configuration: 显示输出ENI文件的预览信息</p></li>
+<li><p>Network topology: 显示EtherCAT从站物理连接图形拓扑图</p></li>
+<li><p>EoE - Virtual network switch: 使能”Ethernet over EtherCAT”功能，可通过EtherCAT主站在EtherCAT数据帧上传输标准以太网报文</p></li>
+<li><p>Max ports: 最大虚拟以太网端口数，该端口数量表示在EtherCAT网络上支持的EoE从站设备个数</p></li>
+<li><p>Max Frames: 用于临时存储事件的内部队列大小</p></li>
+<li><p>Max MAC Ids: 需要大于连接在网络中的最大以太网设备个数</p></li>
+<li><p>Reference clock: 如果有一个或者多个分布式时钟激活，此处仅仅显示作为SYNC Master的从站设备（通常为该网络中第一个支持DC功能的从站）</p></li>
+<li><p>Sync shift time: SYNC0信号偏移值，通常以周期时间的百分比显示，如果不确定该值含义，请使用默认值</p></li>
+<li><p>Divergence threshold: 最大允许的Master时钟与Sync Master时钟的差值阈值</p></li>
+<li><p>Always read identification informations: 如果激活该功能，所有从站的数据(包括VendorID, ProductCode, RevisionNo, SerialNo)将会在启动过程中读取；否则这些数据只会在特定开关打开时进行读取，获取到的数据将存放在在PLC诊断结构体中</p></li>
+</ul>
+</div>
+<div class="section" id="syncunits">
+<h3>SyncUnits选项卡<a class="headerlink" href="#syncunits" title="永久链接至标题">¶</a></h3>
+<p>A SyncUnit describes a set of process data that should be exchanged synchronously and consistently between the master and one or more slaves; to do this, for each SyncUnit a separate cyclic EtherCAT command will be sent by the master.</p>
+<p>Here you can create SyncUnits, and manually assign each slave to a different SyncUnit.</p>
+</div>
+<div class="section" id="raw-commands">
+<h3>Raw commands选项卡<a class="headerlink" href="#raw-commands" title="永久链接至标题">¶</a></h3>
+<p>Here you can manually enter a list of raw EtherCAT commands that will be cyclically sent by the master, and assign its “Data in” and “Data out” to PLC variables if needed.</p>
+<p>Note that this is an advanced feature: usually the cyclic commands are automatically composed from the exchanged variables of the slaves.</p>
+</div>
+<div class="section" id="tasks-and-cycle-time">
+<h3>Tasks and cycle time<a class="headerlink" href="#tasks-and-cycle-time" title="永久链接至标题">¶</a></h3>
+<p>Process data is exchanged between master and slaves with cyclic EtherCAT frames; when the EtherCAT master works together with a PLC, they will be sent on the network synchronously with the Fast PLC task, so it is important to correctly configure the period of it:
+to do this, right-click on <code class="docutils literal notranslate"><span class="pre">Tasks</span> <span class="pre">/</span> <span class="pre">Fast</span></code> in the <code class="docutils literal notranslate"><span class="pre">Project</span></code> tab, choose <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">configuration</span></code> , set <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">period=Yes</span></code> and enter the desired period in milliseconds.</p>
+<div class="figure align-center" id="id15">
+<img alt="../_images/logiclab_fieldbus_ethercat_3.png" src="../_images/logiclab_fieldbus_ethercat_3.png" />
+<p class="caption"><span class="caption-text">任务与EtherCAT周期</span><a class="headerlink" href="#id15" title="永久链接至图片">¶</a></p>
+</div>
+<p>If the EtherCAT configurator is instead used stand-alone without a PLC, there will be an additional  <code class="docutils literal notranslate"><span class="pre">Tasks</span></code> tab where you can configure the “Default cycle time” and optionally a list of cyclic tasks, that you can manually assign to SyncUnits to send different cyclic frames with different periods.</p>
+<p>Every EtherCAT slave on the network will exchange process data with an I/O cycle time that must be multiple of this base cycle time.</p>
+</div>
+</div>
+<div class="section" id="ethercathotconnect">
+<h2>EtherCAT网络与HotConnect组<a class="headerlink" href="#ethercathotconnect" title="永久链接至标题">¶</a></h2>
+<p>The EtherCAT master always has a Main network under it, that contains all the mandatory slaves in the EtherCAT network.</p>
+<p>Each slave with more than 2 ports can also have up to 2 sub-networks, so more complex and non-linear topologies of the EtherCAT network can be created; in this case they will be shown under each slave.</p>
+<p>However a number of groups of optional slaves can be also created: they are called HotConnect groups, because each group could not be present at startup and then connected (or disconnected) later from the network:
+to add them, right-click on the “EtherCAT” node of the master, and then “Add HotConnect group”.</p>
+<p>Please also note that each HotConnect group will need a separate SyncUnit, and if DC is used the “sync master” must be in the main network.</p>
+<p>To add an EtherCAT slave under a Network or a HotConnect group, right-click on it and choose “Add”, or click on it and then drag&amp;drop the slave from the “Catalog” bar.
+If the “Catalog” bar is not visible, you can show it by choosing “View / Tool windows / Catalog” command; all the slaves that are compatible with the type of the selected network will be shown in the catalog.</p>
+<p>The “Catalog” bar will shown only the LAST version of each slave device; to show also ALL older versions, use right-click and “Add”, and then enable “Show all versions”.</p>
+<div class="figure align-center" id="id16">
+<img alt="../_images/logiclab_fieldbus_ethercat_4.png" src="../_images/logiclab_fieldbus_ethercat_4.png" />
+<p class="caption"><span class="caption-text">任务与EtherCAT周期</span><a class="headerlink" href="#id16" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>从站配置<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>By clicking on each EtherCAT slave node in Resources tab, the Slave settings window will be opened. Here you can configure all the settings of the selected slave.</p>
+<p>Right-clicking the slave on the tree also shows additional commands, like “Copy”, “Cut”, “Move up”, “Move down”, “Export to file”.</p>
+<div class="section" id="id7">
+<h3>通用选项卡<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<div class="figure align-center" id="id17">
+<img alt="../_images/logiclab_fieldbus_ethercat_5.png" src="../_images/logiclab_fieldbus_ethercat_5.png" />
+<p class="caption"><span class="caption-text">任务与EtherCAT周期</span><a class="headerlink" href="#id17" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Enabled: enables the usage of this slave; otherwise will be ignored</p></li>
+<li><p>Slave name: unique name of the slave in the EtherCAT network</p></li>
+<li><p>Auto incr address: automatically generated address, that will be used internally by EtherCAT commands; first slave has address 0 and then backwards, depending of the slave position in the network</p></li>
+<li><p>Physical address: address of the slave that is indipendent from its position on the network; if “Manual cfg” is not enabled, will be automatically generated from 1001, otherwise can be manually entered</p></li>
+<li><p>Previous port and Output port: they depend from the network topology; EtherCAT port are usually labelled from A to D (but the EtherCAT frame will follow the ADBC route), and the output port is the last port (in the frame route order) of the same type of the input port. The next slave connected to the output port will be shown as “sibling” in the project tree</p></li>
+<li><p>Device info: here you can see various informations from the ESI file, and enable mandatory identity checks (on VendorID, ProductCode, RevisionNo, SerialNo) on the slave at startup</p></li>
+<li><p>On the first slave of each HotConnect group, it is mandatory to enable the “Check identification” (with any of the 3 supported methods, tipically the “Station alias”, that can be written to EEPROM with Online mode, see below), and optionally the “Check previous slave address” can be enabled to “fix” the position of the group inside the network, after a specific physical address; it this check is not used, the HotConnect group can be positioned anywhere inside the main network</p></li>
+<li><p>Watchdog: advanced settings of the watchdog features of the slave; to disable a watchdog set its value to zero</p></li>
+<li><p>Timeouts for state machine: timeouts in ms for the various transitions of state machine, between: Init, PreOp, SafeOp, Op</p></li>
+<li><p>Use LRD/LWR instead of LRW: if enabled, the optimized LRW command (both read and write, not supported by every slave) will not be used, and two simple LRD (read) and LRW (write) commands will be used instead</p></li>
+</ul>
+</div>
+<div class="section" id="startup">
+<h3>Startup选项卡<a class="headerlink" href="#startup" title="永久链接至标题">¶</a></h3>
+<p>This tab is available only if the slave has CoE support.</p>
+<div class="figure align-center" id="id18">
+<img alt="../_images/logiclab_fieldbus_ethercat_6.png" src="../_images/logiclab_fieldbus_ethercat_6.png" />
+<p class="caption"><span class="caption-text">启动命令配置</span><a class="headerlink" href="#id18" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>PDO assignment: enable it to allow editing of the “Assigned SM” column in “Input” and “Output” tabs, and then download the assignments at startup</p></li>
+<li><p>PDO configuration: enable it to to allow editing of PDOs and PDO entries configuration in “Input” and “Output” tabs, and then download the configuration at startup</p></li>
+<li><p>Add startup cmd: adds a startup command, that is writing the value of a CoE object at specified state transitions. You can freely enter index/subindex of the CoE object to write, or pick one from object dictionary of the ESI file</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>输入与输出选项卡<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>These two tabs (available only if the slave has CoE support) show the actual configuration of PDOs and PDO entries, that compose the process data of the slave, and their assignmento to PLC variables.</p>
+<p>Each PDO has an unique Index, and contains a number of PDO Entries; a PDO entry contains a reference to a CoE object to exchange (given its Index and SubIndex in the dictionary of the slave). Only PDOs assigned to a SyncManager will be included in the process image; PDOs not assigned to a SM will not be exchanged at all.</p>
+<p>Input PDOs contain data read from the slave to the master, and Output PDOs data written from the master to the slave.</p>
+<div class="figure align-center" id="id19">
+<img alt="../_images/logiclab_fieldbus_ethercat_7.png" src="../_images/logiclab_fieldbus_ethercat_7.png" />
+<p class="caption"><span class="caption-text">启动命令配置</span><a class="headerlink" href="#id19" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Assign / UnAssign: choose (or remove) a PLC variable to a specific PDO entry; the PLC variable must already exist in the PLC project, be declared as “Automatic”, and have the same size of the PDO entry</p></li>
+<li><p>Show only assigned PDOs: if enabled, only PDOs that are assigned to a SyncManager (with the “Assigned SM” column) will be shown in the grid</p></li>
+<li><p>Add PDO / Delete PDO: add (or remove) a PDO. “Download PDO configuration” in “Startup” must be enabled</p></li>
+<li><p>Add PDO Entry / Delete PDO Entry: add (or remove) a PDO entry in a PDO, that must not be “Fixed”; “Download PDO assignment” in “Startup” must be enabled. You can freely enter index/subindex/type of the CoE object to read or write, or pick one from object dictionary of the ESI file</p></li>
+<li><p>Assigned SM: SyncManager that will manage and exchange this PDO</p></li>
+<li><p>Fixed: if true, a PDO can not be edited</p></li>
+<li><p>Mandatory: if true, a PDO can not be deleted or unassigned from its SM</p></li>
+<li><p>PLC var column: instead of choosing an existing PLC variable with the “Assign” button, you can also freely enter its name here; if the variable does not exist, will be automatically created</p></li>
+</ul>
+</div>
+<div class="section" id="mailbox">
+<h3>Mailbox选项卡<a class="headerlink" href="#mailbox" title="永久链接至标题">¶</a></h3>
+<p>This tab is available only if the slave has mailbox support.</p>
+<ul class="simple">
+<li><p>Bootstrap specific cfg: advanced settings to alter the mailbox configuration at bootstrap phase</p></li>
+<li><p>Mailbox polling: advanced settings for mailbox polling</p></li>
+<li><p>EoE - Virtual ethernet port: if the slave supports EoE (Ethernet over EtherCAT), here you can configure its IP parameters</p></li>
+</ul>
+</div>
+<div class="section" id="dc">
+<h3>分布式时钟DC选项卡<a class="headerlink" href="#dc" title="永久链接至标题">¶</a></h3>
+<p>This tab is available only if the slave has Distributed clock support.</p>
+<div class="figure align-center" id="id20">
+<img alt="../_images/logiclab_fieldbus_ethercat_8.png" src="../_images/logiclab_fieldbus_ethercat_8.png" />
+<p class="caption"><span class="caption-text">分布式时钟DC参数配置</span><a class="headerlink" href="#id20" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Operation mode: you can choose from here any of the predefined DC operation mode (from ESI file); if the predefined mode has been manually modified, “Customized settings” will be checked</p></li>
+<li><p>DC Enabled: enables the DC for this slave</p></li>
+<li><p>SYNC 0: advanced settings and tuning of the SYNC 0 signal, that is the event when process data is applied: read of the input and actualization of the output</p></li>
+<li><p>SYNC 1: advanced settings and tuning of the SYNC 1 signal, that is a device-dependent secondary event</p></li>
+<li><p>Assign to local uC: assign the generation of SYNC signal to local CPU, instead of using DC from the network</p></li>
+</ul>
+</div>
+<div class="section" id="slots">
+<h3>Slots模块选项卡<a class="headerlink" href="#slots" title="永久链接至标题">¶</a></h3>
+<p>This tab is available only if the slave has modules/slot.</p>
+<div class="figure align-center" id="id21">
+<img alt="../_images/logiclab_fieldbus_ethercat_9.png" src="../_images/logiclab_fieldbus_ethercat_9.png" />
+<p class="caption"><span class="caption-text">Slot模块参数配置</span><a class="headerlink" href="#id21" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Slots list (left pane): this is the list of all available slots to be configured on the target, eventually with a grouping</p></li>
+<li><p>Modules list (right pane): when you select a slot of the left, here all compatible modules with that slot will be shown. Choose “Assign module to a slot” or double-click it to assign.</p></li>
+<li><p>Up: moves up the selected slot, preserving assignments of PLC vars</p></li>
+<li><p>Down: moves down the selected slot, preserving assignments of PLC vars</p></li>
+<li><p>Read all slots cfg: when Online mode is active, try to auto-detect all the slots configuration from the slave</p></li>
+</ul>
+<p>When a module is assigned to a slot, additional CoE dictionary objects, statup commands, or PDOs could be automatically added to the base slave configuration.</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>EtherCAT主站在线模式<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>It is possible to connect the EtherCAT configurator to the EtherCAT network, for debugging and diagnostic purposes.</p>
+<p>First of all, the Online mode must be configured, by choosing “Online config / Set up…” in the “Master settings” window. You can choose between:</p>
+<ul class="simple">
+<li><p>Remote (GDB): EtherCAT master will be normally running on the remote target, with the EtherCAT network connected to him. This should be the preferred connection mode for debugging, because does not alter the behaviour of the master and of the network</p></li>
+<li><p>Gateway: EtherCAT master must not be running on the remote target, and a local EtherCAT master on the PC will be used; the EtherCAT network is physically connected to the remote target, that will only act as a “gateway” to dispatch EtherCAT frames to/from the PC</p></li>
+<li><p>Local: a local EtherCAT master on the PC will be used, and the EtherCAT network must be physically to a local Ethernet port of the PC; this requires the installation of the WinPCAP library on the PC, that can be download from here</p></li>
+</ul>
+<p>Once the Online mode has been set up, you can toggle the “Online mode” button to activate it; an additional “Online” tab will appear.</p>
+<div class="figure align-center" id="id22">
+<img alt="../_images/logiclab_fieldbus_ethercat_10.png" src="../_images/logiclab_fieldbus_ethercat_10.png" />
+<p class="caption"><span class="caption-text">EtherCAT主站在线模式</span><a class="headerlink" href="#id22" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Scan network: auto-detects all connected EtherCAT slaves on the network. If the current project is empty, all slaves will be automatically added; otherwise a dialog will be shown (see below). Please note that you must already have imported ALL the necessary ESI files in the catalog to successfully complete the network scanning</p></li>
+<li><p>Run: toggles the running state of the master</p></li>
+<li><p>Req. state: changes the requested running state of the master; changing the state of the master will also change the state of ALL slaves</p></li>
+<li><p>Actual state: show the actual running state of the master</p></li>
+<li><p>Slaves list: shows a resume of all the slaves, with their addresses and actual running state</p></li>
+</ul>
+<div class="figure align-center" id="id23">
+<img alt="../_images/logiclab_fieldbus_ethercat_11.png" src="../_images/logiclab_fieldbus_ethercat_11.png" />
+<p class="caption"><span class="caption-text">扫描网络</span><a class="headerlink" href="#id23" title="永久链接至图片">¶</a></p>
+</div>
+<p>This is a sample result of the scan: a dialog with two panes, with the scan results on the left and the current configuration on the right, to manually choose which slaves you want to add to the project.</p>
+<p>Please note that “Copy selected” will copy the selected slave on the left AFTER the selected slave on the right, so a selection in both panes must be done.</p>
+<p>With respect to their position, different slaves are shown in red, matching slaves in black, and missing slaves in blue.</p>
+</div>
+<div class="section" id="id10">
+<h2>EtherCAT从站在线模式<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>When Online mode is active, an additional “Online” tab will appear also on each slave.</p>
+<div class="figure align-center" id="id24">
+<img alt="../_images/logiclab_fieldbus_ethercat_12.png" src="../_images/logiclab_fieldbus_ethercat_12.png" />
+<p class="caption"><span class="caption-text">EtherCAT从站在线模式</span><a class="headerlink" href="#id24" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>ESC register access: opens a dialog to read/write values of one or more ESC registers, given its well-known name or freely by index</p></li>
+</ul>
+<div class="figure align-center" id="id25">
+<img alt="../_images/logiclab_fieldbus_ethercat_13.png" src="../_images/logiclab_fieldbus_ethercat_13.png" />
+<p class="caption"><span class="caption-text">ESI寄存器</span><a class="headerlink" href="#id25" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>EEPROM access: opens a dialog to read/write values of EEPROM registers, given its well-known name or freely by index; this is particularly useful to set the “Station alias” if you are using “HotConnect groups”</p></li>
+</ul>
+<div class="figure align-center" id="id26">
+<img alt="../_images/logiclab_fieldbus_ethercat_14.png" src="../_images/logiclab_fieldbus_ethercat_14.png" />
+<p class="caption"><span class="caption-text">EEPROM访问</span><a class="headerlink" href="#id26" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>COE SDO access: opens a dialog to read/write values of one or more CoE objects, by browsing the object dictionary of the slave</p></li>
+</ul>
+<div class="figure align-center" id="id27">
+<img alt="../_images/logiclab_fieldbus_ethercat_15.png" src="../_images/logiclab_fieldbus_ethercat_15.png" />
+<p class="caption"><span class="caption-text">COE SDO访问</span><a class="headerlink" href="#id27" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Diagnostics: opens a dialog that shows diagnostic informations of the slave, internal error codes and physical ports status</p></li>
+</ul>
+<div class="figure align-center" id="id28">
+<img alt="../_images/logiclab_fieldbus_ethercat_16.png" src="../_images/logiclab_fieldbus_ethercat_16.png" />
+<p class="caption"><span class="caption-text">诊断</span><a class="headerlink" href="#id28" title="永久链接至图片">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>FoE transfer: if the slave supports FoE (“File over EtherCAT”), opens a dialog to execute file upload to the slave; this is can be used for firmware upgrade, parameters upload, etc.</p></li>
+<li><p>Req. state: changes the requested running state of the slave; this could be different from the actual state of the master</p></li>
+<li><p>Actual state: show the actual running state of the slave</p></li>
+<li><p>PDO entries list: shows a resume of all the PDO entries, with their current value; double-click on the “Value” column to manually change the value (just once), or enable the “Forced” column if you want to apply the new value permanently. Works for both input and output PDOs</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>EtherCAT诊断功能<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>The EtherCAT Master reads two configuration files generated by EtherCAT configurator:
+* An ENI file, EtherCAT Network Information, which is a standardized description of the network, that is the output of the EtherCAT configurator
+* An XML configuration file, describing the mapping of PLC I/O variables with PDO Entries; this file includes some other master parameters
+At start-up, the master first interprets the ENI, which is sufficient to make a network operable, perhaps for debugging purposes, then reads the configuration XML, opens the communication port, and waits to see the link on that port.</p>
+<p>As soon as the link is detected, the master:
+* it starts sending packets on the network with the timing required
+* synchronizes the system clock: in case of configuration with distributedclock, the whole system must be synchronized at network time.</p>
+<p>Under normal operating conditions, there are some start-up phases before the network becomes operative: all slave configurations are sent by init commands, these commands carry some specific configurations for each slave. Each slave will step through the following states:
+* INIT: initialization phase
+* PREOP: pre operational, no data-exchange occur between master and slaves
+* SAFEOP: safe operational, only input data from slaves to the master are exchanged
+* OP: operational, full data-exchange can happen</p>
+<p>If Distributed clock is used, all slaves operating in distributed clock must synchronize their clocks with that of the sync master.
+The EtherCAT master must also be synchronized to the network clock, and with it the I/O task cycle and a number of connected activities.
+Managing the distributed clock on the master takes place in some phases:</p>
+<ul class="simple">
+<li><p>IDLE: The master clock is completely independent from the slaves</p></li>
+<li><p>SYNCHRONIZING: The master is making preliminary measurements to synchronize with the slaves</p></li>
+<li><p>WAITING_START_TIME: After the master has synced with the slaves, you have to wait for the START_TIME, which is the first time the slaves implement I/O</p></li>
+<li><p>COMPENSATING: If the master clock is synchronous with that of the slaves and after START_TIME has passed, the management goes into this state, which means that the Master is constantly tracking the clocks of the network, in this state typically all slaves are in OP state</p></li>
+<li><p>NOT_SYNCHRONIZED: If for any reason the master fails to follow the network clock, then management goes into this state and all the slaves involved go to the SAFE_OP state.</p></li>
+</ul>
+<p>Some master and slave diagnostic structures provide information about the states discussed above inside the PLC.
+In these structures and their functions one can refer to a slave in two different ways:</p>
+<ul class="simple">
+<li><p>Using the index, positional on the EtherCAT network, the index starts from 0</p></li>
+<li><p>Using a physical address, which can also be selected by the user during configuration</p></li>
+</ul>
+<p>In addition to diagnostic structures, the Master stack can trigger events that can be detected by the PLC application and other plugins in terms of callbacks or callback tasks invocation. Events can typically be:</p>
+<ul class="simple">
+<li><p>the status change of slaves,</p></li>
+<li><p>communication errors,</p></li>
+<li><p>emergency CoE messages,</p></li>
+<li><p>distributed clock status variation,</p></li>
+<li><p>resync events, which occur when the slaves or the entire network are ready to go into operating mode,</p></li>
+<li><p>and finally the network recovery event, which indicates a reboot of EtherCAT communication to deal with a serious error case.</p></li>
+</ul>
+<p>When an event occurs, that event triggers:
+1. updating diagnostic structures related to that event
+2. invoking callback functions for registered plugins
+3. the execution of the special plc task ECAT_Notify, which can be used to read the updated diagnostic structures
+4. as an alternative to the ECAT_Notify task, there is also the ECAT_Resync task, that is invoked at the first time that a node or the whole network goes into operating mode: this allows the PLC programmer to perform additional slave configurations by sending and receiving SDOs.</p>
+</div>
+<div class="section" id="id12">
+<h2>诊断数据结构体参考<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>This chapter describes the diagnostic structures offered by EtherCAT stack and published in the EtherCAT.pll:</p>
+<ul class="simple">
+<li><p>A variable called sysEcatMasterStatus, type ECATMASTERSTATUS, allowing you to have a general view of the status of the EtherCAT network</p></li>
+<li><p>A variable called sysEcatSlaveMonitor, type ECATSLAVEMONITOR, which can be placed in Watch on LogicLab to monitor the particular status of any slave</p></li>
+<li><p>A set of variables associated with events that can be used by the PLC to react to changes in the status and errors of the EtherCAT network:
+1. sysECATEventId, type ECATEVENTID, containing the ID of the last encountered event
+2. sysECATEmcyEvent, type ECATEMCYEVENT: this structure contains information about the last Emergency event sent by a CoE slave
+3. sysECATErrorEvent, type ECATERROREVENT: this structure gives information about the last error event detected on the EtherCAT
+4. sysECATNetworkRecoveryEvent, of type ECATNETWORKRECOVERY: this structure refers to the last event of NetworkRecovery
+5. sysECATNodeStatusChangedEvent, of type ECATNODESTATUSEVENT: this structure gives information about the last change of status of a slave
+6. sysECATDCStatusChangedEvent, of type ECATDCSTATUSEVENT: this structure gives information about the last variation of the master state, related to its synchronization with the Distributed Clock as shown in the overview, these variables can be consulted within the special tasks ECAT_Notify and ECAT_Resync, they can also be watched in LogicLab for more detailed information about events occured.</p></li>
+<li><p>A set of functions to access the slave diagnostic structures, containing the same information as the SlaveMonitor; they can refer to the physical address of the node (ByAddress version), or to the location index of the node in the network, starting from index 0 (ByIndex version):
+1. sysECAT_GetSlaveDiag [ByAddress | ByIndex]: Returns a pointer to the diagnostic structure (&#64;ECATSLAVESTATUS), or NULL if the function fails
+2. sysECAT_GetSlaveCfg [ByAddress | ByIndex]: Returns a boolean value whether the required slave has been configured or not
+3. sysECAT_GetSlavePres [ByAddress | ByIndex]: Returns a boolean value indicating the presence, if the slave is physically connected
+4. sysECAT_GetSlaveState [ByAddress | ByIndex]: Returns the slave network status (ECATSTATE)</p></li>
+<li><p>Two function blocks for read and write SDO; they can be used to read or write objects to perform checks from PLC, or to do auxiliary configurations after the network has entered the operating mode:
+1. sysECAT_Sdo_Read
+2. sysECAT_Sdo_Write</p></li>
+</ul>
+<p>For further details and descriptions of all the fields, please see the “Properties” window inside LogicLab of each object of the EtherCAT.pll library.</p>
+</div>
+<div class="section" id="faq">
+<h2>问题分析与FAQ<a class="headerlink" href="#faq" title="永久链接至标题">¶</a></h2>
+<p>What happens if the drives_clock field of the diagnostic structure of the master becomes FALSE?
+This field indicates that a timeout has occurred such that the LLExec clock has been released from the EtherCAT Clock: typically this can happen when communication between the Master and the first slave fails due to, for example, the first cable interrupted or of a fault in the first slave.</p>
+<p>What happens if one or more nodes are not present or stop working?
+In the event that the fault is located in the first slave, the most common symptom is that the drives_clock flag in the master’s structure becomes false.
+In the case of fault located in other nodes, it depends on whether they are present during the network startup phase or not:
+if there are missing nodes in the startup phase the network will not go beyond the INIT state, you can use the SlaveMonitor to see which is the first node that presented an error or is missing.
+In case the network has already gone into operational, the field network_ok of the master becomes false, you can use the SlaveMonitor to check which slave is missing, or have submitted an error.
+Attention: if a slave stops working, the other slaves may remain in operating status: it is therefore the task of the application to reset the outputs or take appropriate actions.</p>
+<p>What happens if the network_ok field of the diagnostic structure of the master becomes FALSE?
+network_ok becomes TRUE when all the slaves go into operating mode, it returns FALSE if a slave is no longer present, or has shown an error.
+You can use the SlaveMonitor, to be able to identify the slave that is not present, or the one that has shown an error.</p>
+<p>What happens if less slaves are configured than those actually present in the network?
+The network will not go into operation, apparently all the slaves do not report errors, so you can look at the sysECATErrotEvent structure to check if there are any errors not related to the configured slaves:
+in this case you will see the error K10063_MASTER_SLAVES_COUNT</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, 上海翌控科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

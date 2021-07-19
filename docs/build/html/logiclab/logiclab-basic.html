@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>LogicLab操作基础入门 &mdash; LogicLab编程工具用户指南 1.0.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> LogicLab编程工具用户指南
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">LogicLab操作基础入门</a><ul>
+<li><a class="reference internal" href="#id2">通过在线扫描新建工程</a></li>
+<li><a class="reference internal" href="#id3">标准模式新建工程</a></li>
+<li><a class="reference internal" href="#id4">配置通讯参数</a></li>
+<li><a class="reference internal" href="#id5">工程逻辑元素与设备资源配置</a></li>
+<li><a class="reference internal" href="#id6">添加编写逻辑的容器 - 程序</a></li>
+<li><a class="reference internal" href="#id7">工程库中的功能块与函数</a></li>
+<li><a class="reference internal" href="#id8">全局变量与局部变量</a></li>
+<li><a class="reference internal" href="#id9">自定义数据类型</a></li>
+<li><a class="reference internal" href="#id10">通过目录分层管理工程逻辑</a></li>
+<li><a class="reference internal" href="#id11">手动添加工程库</a></li>
+<li><a class="reference internal" href="#id12">修改任务参数</a></li>
+<li><a class="reference internal" href="#id13">工程编译与下载</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LogicLab编程工具用户指南</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+<div role="navigation" aria-label="Breadcrumbs">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>LogicLab操作基础入门</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="logiclab">
+<span id="logiclab-basic"></span><h1>LogicLab操作基础入门<a class="headerlink" href="#logiclab" title="永久链接至标题">¶</a></h1>
+<p>在深入基于LogicLab应用IEC61131-3编程之前，首先需要熟悉LogicLab编程工具基础操作，本文章节将由浅入深来讲解LogicLab编程工具的基础操作步骤。</p>
+<div class="contents local topic" id="id1">
+<p class="topic-title">本章节内容目录</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id2" id="id29">通过在线扫描新建工程</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id30">标准模式新建工程</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id31">配置通讯参数</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id32">工程逻辑元素与设备资源配置</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id33">添加编写逻辑的容器 - 程序</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id34">工程库中的功能块与函数</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id35">全局变量与局部变量</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id36">自定义数据类型</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id37">通过目录分层管理工程逻辑</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id38">手动添加工程库</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id39">修改任务参数</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id40">工程编译与下载</a></p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>通过在线扫描新建工程<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>目前大部分基于LogicLab解决方案开发的控制器都支持以太网方式下载，对于此控制器产品，LogicLab提供了在线扫描方式可以快速为该控制器创建PLC工程，默认配置好目标控制器类型与通讯参数。用户可以在LogicLab编程工具主界面上点击 <code class="docutils literal notranslate"><span class="pre">扫描网络</span></code> 后即可搜索当前局域网内的控制器信息与当前的设备IP地址，并且可以点击 <code class="docutils literal notranslate"><span class="pre">新建工程</span></code> 使用当前扫描到的控制器信息创建工程：</p>
+<div class="figure align-center" id="id14">
+<img alt="../_images/logiclab_basic_01.png" src="../_images/logiclab_basic_01.png" />
+<p class="caption"><span class="caption-text">图1: 在线扫描方式新建工程</span><a class="headerlink" href="#id14" title="永久链接至图片">¶</a></p>
+</div>
+<div class="figure align-center" id="id15">
+<img alt="../_images/logiclab_basic_02.png" src="../_images/logiclab_basic_02.png" />
+<p class="caption"><span class="caption-text">图2: 默认已经勾选目标控制器类型</span><a class="headerlink" href="#id15" title="永久链接至图片">¶</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>如PC第一次安装LogicLab编程工具，并第一次使用 <code class="docutils literal notranslate"><span class="pre">扫描网络</span></code> 功能时，Windows系统会提示解除LogicLab编程工具防火墙限定提示，确认后即可正常进行在线扫描。极少数公司的PC机对于网络应用有非常严格的管理，可能在线扫描模式不可用，因此需要通过 <a class="reference internal" href="#id3">标准模式新建工程</a> 新建工程。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>标准模式新建工程<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>标准模式新建工程与在线扫描模式类似，只是需要完全手动选择控制器类型与手动配置通讯参数，主界面 <code class="docutils literal notranslate"><span class="pre">新建工程</span></code> 或者菜单 <code class="docutils literal notranslate"><span class="pre">文件-&gt;新工程</span></code> 来手动选择控制器类型，通过标准模式新建工程，需要自行 <a class="reference internal" href="#id4">配置通讯参数</a> 。</p>
+<div class="figure align-center" id="id16">
+<img alt="../_images/logiclab_basic_03.png" src="../_images/logiclab_basic_03.png" />
+<p class="caption"><span class="caption-text">图3: 在线扫描方式新建工程</span><a class="headerlink" href="#id16" title="永久链接至图片">¶</a></p>
+</div>
+<div class="figure align-center" id="id17">
+<img alt="../_images/logiclab_basic_04.png" src="../_images/logiclab_basic_04.png" />
+<p class="caption"><span class="caption-text">图4: 手动选择控制器类型</span><a class="headerlink" href="#id17" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>配置通讯参数<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>通过标准模式新建工程时，需要在LogicLab编程工具中指定控制器的IP地址与通讯端口，或者其他通讯参数，通过菜单 <code class="docutils literal notranslate"><span class="pre">在线-&gt;设置通讯</span></code> 可以打开 <code class="docutils literal notranslate"><span class="pre">设备连接管理器</span></code> ,并选择相应的通讯协议，进行参数设定与激活如下图所示：</p>
+<div class="figure align-center" id="id18">
+<img alt="../_images/logiclab_basic_05.png" src="../_images/logiclab_basic_05.png" />
+<p class="caption"><span class="caption-text">图5: 设备连接管理器配置界面</span><a class="headerlink" href="#id18" title="永久链接至图片">¶</a></p>
+</div>
+<p>以下分别是三种常用的LogicLab编程工具与控制器之间的调试与下载协议：GDB、Modbus RTU以及Modbus TCP：</p>
+<div class="figure align-center" id="id19">
+<img alt="../_images/logiclab_basic_06.png" src="../_images/logiclab_basic_06.png" />
+<p class="caption"><span class="caption-text">图6: GDB下载通讯协议配置界面（常用）</span><a class="headerlink" href="#id19" title="永久链接至图片">¶</a></p>
+</div>
+<div class="figure align-center" id="id20">
+<img alt="../_images/logiclab_basic_07.png" src="../_images/logiclab_basic_07.png" />
+<p class="caption"><span class="caption-text">图7: Modbus RTU下载通讯协议配置界面（小型PLC常用）</span><a class="headerlink" href="#id20" title="永久链接至图片">¶</a></p>
+</div>
+<div class="figure align-center" id="id21">
+<img alt="../_images/logiclab_basic_08.png" src="../_images/logiclab_basic_08.png" />
+<p class="caption"><span class="caption-text">图8: Modbus TCP下载通讯协议配置界面（小型PLC常用）</span><a class="headerlink" href="#id21" title="永久链接至图片">¶</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>无论是通过 <a class="reference internal" href="#id2">通过在线扫描新建工程</a> 还是通过 <a class="reference internal" href="#id3">标准模式新建工程</a> ，首先需要确保使用LogicLab编程工具的PC可以与设备正常建立通讯。例如使用以太网功能下载，则需要确保使用LogicLab编程工具的PC与目标设备处于同一个网段，并且可以ping通设备。如果使用串口Modbus RTU协议下载，则需要确保目标设备上是否提供串口下载PLC程序的功能，请与您的硬件供应商进行确认。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>工程逻辑元素与设备资源配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>在LogicLab编程工具中，工程逻辑包括程序、功能块、函数、数据类型、任务等等需要在控制器中应用的逻辑元素，并且可以通过右键菜单进行添加。关于任务个数与类型在控制器设计之初就会被固定下来，用户只可以修改其参数而不可以添加或删除，详细任务说明请参阅对应控制器厂商使用说明书的 <code class="docutils literal notranslate"><span class="pre">任务定义与管理</span></code> 章节。</p>
+<div class="figure align-center" id="id22">
+<img alt="../_images/logiclab_basic_09.png" src="../_images/logiclab_basic_09.png" />
+<p class="caption"><span class="caption-text">图9: 工程逻辑界面与可新建的工程逻辑元素</span><a class="headerlink" href="#id22" title="永久链接至图片">¶</a></p>
+</div>
+<p>设备资源配置包括I/O信号、系统参数、现场总线、通讯、运动控制等等外部硬件功能，根据控制器设计的硬件外设与功能不同，不同的控制器的设备资源配置界面可能是不同的。LogicLab解决方案自带的现场总线配置可以参考 <a class="reference internal" href="logiclab-fieldbus.html#logiclab-fieldbus"><span class="std std-ref">LogicLab现场总线</span></a> 页面，其他由控制器厂商进行二次开发的组件请参考对应控制器厂商使用说明书的 <code class="docutils literal notranslate"><span class="pre">设备资源</span></code> 章节。</p>
+<div class="figure align-center" id="id23">
+<img alt="../_images/logiclab_basic_10.png" src="../_images/logiclab_basic_10.png" />
+<p class="caption"><span class="caption-text">图10: 设备资源配置界面</span><a class="headerlink" href="#id23" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>添加编写逻辑的容器 - 程序<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">程序（Program）</span></code> 、 <code class="docutils literal notranslate"><span class="pre">功能块（Function</span> <span class="pre">Block）</span></code> 与 <code class="docutils literal notranslate"><span class="pre">函数（Function）</span></code> 是IEC61131-3标准中定义的 <code class="docutils literal notranslate"><span class="pre">程序组织单元（POU）</span></code> 的组成基础，用于描述在PLC控制器中运行的逻辑，因此应用开发工程师需要使用程序、功能块或函数来进行工程逻辑编写。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>在进行现场应用逻辑开发时，一般情况下，工程师主要创建一个 <code class="docutils literal notranslate"><span class="pre">程序（Program）</span></code> ，并在其代码中使用默认工程库中的 <code class="docutils literal notranslate"><span class="pre">功能块（Function</span> <span class="pre">Block）</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">函数（Function）</span></code> 编写对应的应用逻辑。如果工程师期望将现有的逻辑进行二次封装为全新的指令（功能块或者函数），那么才需要在LogicLab中创建 <code class="docutils literal notranslate"><span class="pre">功能块（Function</span> <span class="pre">Block）</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">函数（Function）</span></code> 。关于逻辑代码二次封装，请参考：<span class="xref std std-ref">基于LogicLab的IEC61131-3编程指南</span> 页面。</p>
+</div>
+<p>可以在工程树种右键菜单添加程序，并指定程序所使用的编程语言：
+* IL（指令表编程语言）
+* FBD（功能块图编程语言）
+* LD（梯形图编程语言）
+* ST（结构化文本编程语言）
+* SFC（顺序功能图编程语言）</p>
+<p>同时需要指定程序名称，程序名称必须需要以 <code class="docutils literal notranslate"><span class="pre">大小写英文字母</span></code> 开头，搭配 <code class="docutils literal notranslate"><span class="pre">数字</span></code> 、 <code class="docutils literal notranslate"><span class="pre">半角下划线与中横杠</span></code> 来进行命名。</p>
+<p>并且需要对程序指定一个任务，由该任务按照其执行的规则来运行该程序逻辑。添加一个程序如下所示：</p>
+<div class="figure align-center" id="id24">
+<img alt="../_images/logiclab_basic_iec_prog_01.png" src="../_images/logiclab_basic_iec_prog_01.png" />
+<p class="caption"><span class="caption-text">图11: 添加程序</span><a class="headerlink" href="#id24" title="永久链接至图片">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p><code class="docutils literal notranslate"><span class="pre">任务（Task）</span></code> 是执行控制器逻辑的基础，在控制器研发阶段，任务的个数与类型会由控制器厂商根据控制器的定义而开发，从应用角度上来划分，主要可以分为 <code class="docutils literal notranslate"><span class="pre">周期型任务</span></code> 与 <code class="docutils literal notranslate"><span class="pre">单次执行任务</span></code> 两大类。</p>
+</div>
+<p>程序添加完毕后，可以在工程树中双击该程序打开其变量定义与代码编辑界面，</p>
+<div class="figure align-center" id="id25">
+<img alt="../_images/logiclab_basic_iec_prog_02.png" src="../_images/logiclab_basic_iec_prog_02.png" />
+<p class="caption"><span class="caption-text">图12: 梯形图程序中的基础操作</span><a class="headerlink" href="#id25" title="永久链接至图片">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">程序</span></code> 代码中可以使用 <code class="docutils literal notranslate"><span class="pre">功能块与函数</span></code> ，用户创建的 <code class="docutils literal notranslate"><span class="pre">功能块</span></code> 中可以使用 <code class="docutils literal notranslate"><span class="pre">功能块与函数</span></code> ，用户创建的 <code class="docutils literal notranslate"><span class="pre">函数</span></code> 中仅能使用 <code class="docutils literal notranslate"><span class="pre">函数</span></code> ，相关调用的关系以及更加详细的编程语言指南，请参阅： <span class="xref std std-ref">基于LogicLab的IEC61131-3编程指南</span> 页面。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>工程库中的功能块与函数<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>在开发工程应用逻辑时，可以使用控制器默认提供的工程库，默认的工程库一般是由控制器研发厂商默认配置好，适用于当前控制器并且经过了测试。</p>
+<p>这些工程库有即包含IEC61131-3标准中定义的功能块与函数，也有包含控制器厂商根据自己产品需求进行开发功能块与函数。由控制器厂商进行二次开发的工程库请参考对应控制器厂商使用说明书的 <code class="docutils literal notranslate"><span class="pre">控制器专用工程库</span></code> 章节。</p>
+<p>例如在 <code class="docutils literal notranslate"><span class="pre">LogicLab运动控制开发套件</span></code> 中包含如下工程库：</p>
+<div class="figure align-center" id="id26">
+<img alt="../_images/logiclab_basic_libmgr_01.png" src="../_images/logiclab_basic_libmgr_01.png" />
+<p class="caption"><span class="caption-text">图13: 工程库中的功能块与函数</span><a class="headerlink" href="#id26" title="永久链接至图片">¶</a></p>
+</div>
+<p>同时可以打开工程库管理界面或者刷新工程库：</p>
+<div class="figure align-center" id="id27">
+<img alt="../_images/logiclab_basic_libmgr_02.png" src="../_images/logiclab_basic_libmgr_02.png" />
+<p class="caption"><span class="caption-text">图14: 工程库管理与刷新工程库</span><a class="headerlink" href="#id27" title="永久链接至图片">¶</a></p>
+</div>
+<p>工程库管理界面中，可以添加新的或者删除现有工程中的工程库：</p>
+<div class="figure align-center" id="id28">
+<img alt="../_images/logiclab_basic_libmgr_03.png" src="../_images/logiclab_basic_libmgr_03.png" />
+<p class="caption"><span class="caption-text">图15: 工程库增加与删除</span><a class="headerlink" href="#id28" title="永久链接至图片">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>工程库文件命名为 <code class="docutils literal notranslate"><span class="pre">*.plclib</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">*.pll</span></code> ,目前大多数工程库采用 <code class="docutils literal notranslate"><span class="pre">*.plclib</span></code> 命名模式，可以存放更多的工程信息。 <code class="docutils literal notranslate"><span class="pre">*.pll</span></code> 格式的工程库为LogicLab早期工程库格式，目前仅仅在一些最基础的系统库中会使用到。</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>全局变量与局部变量<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">变量Variable</span></code> 是IEC61131-3标准吸收现代高级编程思想并且在工业控制领域的实际应用。</p>
+<p>在LogicLab中可以添加全局变量与局部变量，全局变量可以由当前工程中所有的程序、功能块与函数POU共享与访问，作为不同逻辑之间相互数据交互的桥梁。而局部使用范围仅限于定义该变量的程序、功能块与函数POU范围内使用。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>无论是全局变量或者是局部变量，区别仅仅是该变量的作用域，而带有特殊地址的变量一般都使用全局变量。详细变量说明请参考： <span class="xref std std-ref">基于LogicLab的IEC61131-3编程指南</span> 页面。</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>自定义数据类型<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>除了基础数据类型以外，还可以通过基础数据类型组成复杂的结构体或者定义枚举、数组等等额外数据类型。基础数据类型与复杂数据类型详细含义，请参考： <span class="xref std std-ref">基于LogicLab的IEC61131-3编程指南</span> 页面。</p>
+</div>
+<div class="section" id="id10">
+<h2>通过目录分层管理工程逻辑<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id11">
+<h2>手动添加工程库<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id12">
+<h2>修改任务参数<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id13">
+<h2>工程编译与下载<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, 上海翌控科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

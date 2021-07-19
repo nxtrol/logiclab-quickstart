@@ -1,5 +1,7 @@
 # LogicLab Document
-LogicLab user guide manual in Simple Chinese version source code by using readthedocs tools.
+LogicLab中文教程文档通过下面命令构建
+cd docs
+.\make html
 
 # Supported hardware
 - Raspberry PI

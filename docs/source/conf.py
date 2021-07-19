@@ -97,15 +97,24 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the built-in "default.css".
 # html_static_path = ['_static']
-
+#
+#html_context = {
+#    "display_github": "False",
+#    "github_user": "nxtrol",
+#    "github_repo": "logiclab_userguide",
+#    "github_version": "master",
+#    "conf_py_path": "/docs/source/",
+#}
+#
+#
 # Github options used with Sphinx
 html_context = {
-    "display_github": "True",
-    "github_user": "nxtrol",
-    "github_repo": "logiclab_userguide",
-    "github_version": "master",
-    "conf_py_path": "/docs/source/",
+    "display_github": False, # Add 'Edit on Github' link instead of 'View page source'
+    "last_updated": False,
+    "commit": False,
 }
+
+html_show_sourcelink = False
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
