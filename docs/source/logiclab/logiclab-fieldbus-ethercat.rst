@@ -35,12 +35,11 @@ EtherCAT主站与从站同时都包含状态机用于定义在启动以及运行
 
 一个ESC包含多个同步管理器SM(Sync Managers)，同步管理器是用于管理过程数据一致性以及内部通过邮箱处理非周期性命令的单元。PDOs需要分配到SM上来进行数据交换；ESI同时也包括现场总线内存管理单元FMMU (Fieldbus Memory Management Unit)，它是内存映射至过程数据逻辑地址区域的单元，同时一个EEPROM用于存储从站设置。
 
-EtherCAT协议同时也定义了很多用于通讯的子协议与设备规约，常见的协议如下：
+EtherCAT协议同时也定义了很多用于通讯的子协议与设备规约，目前支持的常见的协议与规约如下：
 * CoE: CANopen over EtherCAT。基于EtherCAT协议的CANopen通讯规约
 * EoE: Ethernet over EtherCAT。基于EtherCAT协议以太网通讯
 * FoE: File access over EtherCAT。基于EtherCAT协议的文件访问
 * SoE: Sercos over EtherCAT。基于EtherCAT协议的Sercos通讯规约
-* FSoE: Safety over EtherCAT。基于EtherCAT协议的安全通讯规约
 
 
 快速入门
@@ -183,17 +182,16 @@ Right-clicking the slave on the tree also shows additional commands, like "Copy"
    任务与EtherCAT周期
 
 
-* Enabled: enables the usage of this slave; otherwise will be ignored
-* Slave name: unique name of the slave in the EtherCAT network
-* Auto incr address: automatically generated address, that will be used internally by EtherCAT commands; first slave has address 0 and then backwards, depending of the slave position in the network
-* Physical address: address of the slave that is indipendent from its position on the network; if "Manual cfg" is not enabled, will be automatically generated from 1001, otherwise can be manually entered
-* Previous port and Output port: they depend from the network topology; EtherCAT port are usually labelled from A to D (but the EtherCAT frame will follow the ADBC route), and the output port is the last port (in the frame route order) of the same type of the input port. The next slave connected to the output port will be shown as "sibling" in the project tree
-* Device info: here you can see various informations from the ESI file, and enable mandatory identity checks (on VendorID, ProductCode, RevisionNo, SerialNo) on the slave at startup
-* On the first slave of each HotConnect group, it is mandatory to enable the "Check identification" (with any of the 3 supported methods, tipically the "Station alias", that can be written to EEPROM with Online mode, see below), and optionally the "Check previous slave address" can be enabled to "fix" the position of the group inside the network, after a specific physical address; it this check is not used, the HotConnect group can be positioned anywhere inside the main network
-* Watchdog: advanced settings of the watchdog features of the slave; to disable a watchdog set its value to zero
-* Timeouts for state machine: timeouts in ms for the various transitions of state machine, between: Init, PreOp, SafeOp, Op
-* Use LRD/LWR instead of LRW: if enabled, the optimized LRW command (both read and write, not supported by every slave) will not be used, and two simple LRD (read) and LRW (write) commands will be used instead
-
+* Enabled: 激活该从站设备，否则该EtherCAT从站会被忽略
+* Slave name: EtherCAT网络中的从站唯一名称
+* Auto incr address: 自动生成的地址，EtherCAT数据帧内部将会使用到该参数；第一个从站拥有地址0，后续从站将根据实际的位置降低
+* Physical address: 与网络位置无关的从站地址；如果“手动配置”选项没有激活，那么该地址将会从1001开始自动分配，否则可以手动输入
+* Previous port and Output port: 该参数取决于网络拓扑；EtherCAT端口通常从A到D进行标识（EtherCAT数据帧将沿着ADBC路径传输），以及Output端口是从Input端口路径的最后一个端口（EtherCAT数据帧的路径顺序）。下一个连接至输出端口的从站将会在工程树中显示为”sibling”
+* Device info: 这里您能看到很多ESI文件中的信息，以及激活在从站启动时的强制标识检查(例如：VendorID, ProductCode, RevisionNo, SerialNo) 
+* 在每一个HotConnect组的第一个从站，必须要强制激活"Check identification"（采用三种任意支持的方法，典型的例如”Station alias”，这些方法可以通过在线模式写入至EEPROM中，请查看后续描述），可选激活的"Check previous slave address"选项可用，在特定的物理地址后“修正”EtherCAT网络内组的位置，HotConnect组可以位于EtherCAT网络中的任意位置
+* Watchdog: 从站看门狗功能高级设定；设置该值为0可以关闭看门狗功能
+* Timeouts for state machine: Init, PreOp, SafeOp, Op状态机切换毫秒超时
+* Use LRD/LWR instead of LRW: 如果激活该选项，将不会使用优化LRW命令（同时读与写，并不是每一个从站都支持该命令），将会使用两个简单的LRD（读）与LRW（写）命令替换LRW
 
 Startup选项卡
 ^^^^^^^^^^^^^^
